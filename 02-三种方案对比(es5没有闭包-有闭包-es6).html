@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<button>按钮1</button>
+<button>按钮2</button>
+<button>按钮3</button>
+<button>按钮4</button>
+<button>按钮5</button>
+</body>
+
+<script>
+  // 没有块级作用域引起的问题；for的块级
+  // 为什么闭包可以解决问题：函数是一个作用域
+  // 1 ES5中没有闭包（错误）
+  // var btns=document.getElementsByTagName('button')
+  // for(var i=0;i<btns.length;i++){
+  //   btns[i].addEventListener('click',function(){
+  //     console.log('按钮'+i+'被点击了')
+  //   })
+  // }
+  // 2 ES5中有闭包
+  var btns=document.getElementsByTagName('button')
+    for(var i=0;i<btns.length;i++) {
+      (function(i){
+        btns[i].addEventListener('click',function(){
+          console.log('按钮'+i+'被点击了')
+        })
+      })(i)
+    }
+  //3 ES中的let
+  // const btns=document.getElementsByTagName('button')
+  // for(let i=0;i<btns.length;i++){
+  //   btns[i].addEventListener('click',function(){
+  //     console.log('按钮'+i+'被点击了')
+  //   })
+  // }
+
+</script>
+</html>
